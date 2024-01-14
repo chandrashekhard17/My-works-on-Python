@@ -1,0 +1,20 @@
+import mysql.connector
+mydb=mysql.connector.connect(
+    host="localhost",
+    user="abc",
+    password="password",
+    database="IA_marks"
+)
+
+mycursor=mydb.cursor()
+
+mycursor.execute("create database if not exists IA_marks")
+mycursor.execute("use IA_marks")
+mycursor.execute("create table if not exists marks_table(name varchar(20),usn varchar(10),marks int,branch varchar(255))")
+mycursor.execute("insert into marks_table values('subhash','4bb21cs013,90, 'cse')")
+mycursor.execute("insert into marks_table values('chandra','4bb21cs014,95, 'ese')")
+mycursor.execute("insert into marks_table values('bose','4bb21cs015,98, 'ise')")
+mydb.commit()
+mycursor.execute("show databases")
+for db in mycursor:
+    print (db)  
