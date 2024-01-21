@@ -1,0 +1,39 @@
+from flask import Flask
+from flask import request
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return "Hello, World!"
+
+@app.route('/hello1')
+def hello():
+    return 'hello world 1'
+
+@app.route('/chandrashekhar')
+def greeting():
+    data = request.args.get('x')
+    return f'hi this is {data} good morning'
+
+@app.route('/performance')
+def test():
+    name='sudh'+'kumar'
+    return f'The mentor name is {name}'
+
+@app.route('/datascience')
+def course():
+    platform='pwskills'
+    data=request.args.get('name')
+    return f'this is my data science course which is very affordable cost from {platform} and awarded for the name {data}'
+
+@app.route('/bank')
+def amount():
+    balance=1000
+    bank='SBI Bank'
+    withdraw=request.args.get('xyz')
+    return f'Your bank balance is {balance} from {bank} you requesting your withdrawl amount is {withdraw}'
+
+
+if __name__=="__main__":
+    app.run(host="0.0.0.0")
